@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
@@ -104,13 +105,13 @@ y_test_predict = lin_model.predict(X_test)
 rmse_testing = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
 r2_testing = r2_score(Y_test, y_test_predict)
 
-print("model evaluation for training set: {%s}\n" % rmse_training)
+print("model evaluation for rmse_training set: {%s}\n" % rmse_training)
 
-print("model evaluation for testing set: {%s}\n" % r2_training)
+print("model evaluation for r2_training set: {%s}\n" % r2_training)
 
-print("model evaluation for training set: {%s}\n" % rmse_testing)
+print("model evaluation for rmse_testing set: {%s}\n" % rmse_testing)
 
-print("model evaluation for testing set: {%s}\n" % r2_testing)
+print("model evaluation for r2_testing set: {%s}\n" % r2_testing)
 
 
 # with open("evalution.txt", 'w') as outfile:
