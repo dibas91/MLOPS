@@ -106,7 +106,6 @@ rmse_testing = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
 r2_testing = r2_score(Y_test, y_test_predict)
 
 
-Write scores to a file
 with open("evalution.txt", 'w') as outfile:
         outfile.write("model evaluation for training set: {}\n" % rmse_training)
         outfile.write("model evaluation for testing set: {}\n" % r2_training)
