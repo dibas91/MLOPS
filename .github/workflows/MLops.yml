@@ -1,21 +1,18 @@
 name: Boston dataset
 on: [push]
 jobs:
-  run:
-    runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: cml_run
-        env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          apt-get install python3
+    - uses: actions/checkout@v2
+    - name: cml_run
+      env:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        apt-get install python3
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
           python3 MLops.py
-
-          
           touch ./report.md
           echo "## Model metrics" > ./report.md
           cat evalution.txt >> ./report.md

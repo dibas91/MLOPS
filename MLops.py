@@ -7,7 +7,9 @@ from sklearn.datasets import load_boston
 from sklearn.metrics import mean_squared_error,r2_score
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
-import seaborn as sns 
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
 
 boston = load_boston()
 #print(boston.DESCR)
@@ -51,22 +53,16 @@ plt.bar(index,corrs,width=0.5)
 plt.xlabel('features')
 plt.ylabel("correlation with target values")
 plt.xticks(index,labels)
-plt.savefig("feature",dpi=120) 
+plt.savefig("feature",dpi=80) 
+#plt.close()
 plt.show()
-plt.close()
 
 plt.xlabel('target')
 sns.set(rc={'figure.figsize':(11.7,8.27)})
 save = sns.distplot(target, bins=30)
-plt.savefig("target",dpi=120)
+plt.savefig("target",dpi=80)
+#plt.close()
 plt.show()
-plt.close()
-
-X = pd.DataFrame(np.c_[features['LSTAT'], features['RM']], columns = ['LSTAT','RM'])
-Y = target
-
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state=5)
 # print(X_train.shape)
@@ -76,19 +72,23 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, rando
 
 # Fit a model on the train section
 # Set random seed
-seed = 42
-regr = RandomForestRegressor(max_depth=2, random_state=seed)
-regr.fit(X_train, Y_train)
+# seed = 42
+# regr = RandomForestRegressor(max_depth=2, random_state=seed)
+# regr.fit(X_train, Y_train)
 
 # Report training set score
 train_score = regr.score(X_train, Y_train) * 100
 # Report test set score
 test_score = regr.score(X_test, Y_test) * 100
 
+print("Training variance explained: {%s}\n" % train_score)
 
-with open("metrics.txt", 'w') as outfile:
-        outfile.write("Training variance explained: %2.1f%%\n" % train_score)
-        outfile.write("Test variance explained: %2.1f%%\n" % test_score)
+print("Test variance explained: {%s}\n" % test_score)
+
+
+# with open("metrics.txt", 'w') as outfile:
+#         outfile.write("Training variance explained: %2.1f%%\n" % train_score)
+#         outfile.write("Test variance explained: %2.1f%%\n" % test_score)
 
 lin_model = LinearRegression()
 lin_model.fit(X_train, Y_train)
@@ -105,9 +105,17 @@ y_test_predict = lin_model.predict(X_test)
 rmse_testing = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
 r2_testing = r2_score(Y_test, y_test_predict)
 
+print("model evaluation for training set: {%s}\n" % rmse_training)
 
-with open("evalution.txt", 'w') as outfile:
-        outfile.write("model evaluation for training set: {}\n" % rmse_training)
-        outfile.write("model evaluation for testing set: {}\n" % r2_training)
-        outfile.write("model evaluation for training set: {}\n" % rmse_testing)
-        outfile.write("model evaluation for testing set: {}\n" % r2_testing)
+print("model evaluation for testing set: {%s}\n" % r2_training)
+
+print("model evaluation for training set: {%s}\n" % rmse_testing)
+
+print("model evaluation for testing set: {%s}\n" % r2_testing)
+
+
+# with open("evalution.txt", 'w') as outfile:
+#         outfile.write("model evaluation for training set: {%s}\n" % rmse_training)
+#         outfile.write("model evaluation for testing set: {}\n" % r2_training)
+#         outfile.write("model evaluation for training set: {}\n" % rmse_testing)
+#         outfile.write("model evaluation for testing set: {}\n" % r2_testing)
