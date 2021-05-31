@@ -53,15 +53,15 @@ plt.xlabel('features')
 plt.ylabel("correlation with target values")
 plt.xticks(index,labels)
 plt.savefig("feature",dpi=120) 
-#plt.close()
 plt.show()
+plt.close()
 
 plt.xlabel('target')
 sns.set(rc={'figure.figsize':(11.7,8.27)})
 save = sns.distplot(target, bins=30)
-plt.savefig("target",dpi=130)
-#plt.close()
+plt.savefig("target",dpi=120)
 plt.show()
+plt.close()
 
 X = pd.DataFrame(boston.data,columns=boston.feature_names)
 #X = pd.DataFrame(np.c_[boston['CRIM'], boston['RM']], columns = ['CRIM','RM'])
@@ -85,9 +85,9 @@ train_score = regr.score(X_train, Y_train) * 100
 # Report test set score
 test_score = regr.score(X_test, Y_test) * 100
 
-print("Training variance explained: {%s}\n" % train_score)
+# print("Training variance explained: {%s}\n" % train_score)
 
-print("Test variance explained: {%s}\n" % test_score)
+# print("Test variance explained: {%s}\n" % test_score)
 
 
 with open("metrics.txt", 'w') as outfile:
