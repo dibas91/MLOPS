@@ -90,9 +90,9 @@ print("Training variance explained: {%s}\n" % train_score)
 print("Test variance explained: {%s}\n" % test_score)
 
 
-# with open("metrics.txt", 'w') as outfile:
-#         outfile.write("Training variance explained: %2.1f%%\n" % train_score)
-#         outfile.write("Test variance explained: %2.1f%%\n" % test_score)
+with open("metrics.txt", 'w') as outfile:
+        outfile.write("Training variance explained: {%s}\n" % train_score)
+        outfile.write("Test variance explained: {%s}\n" % test_score)
 
 lin_model = LinearRegression()
 lin_model.fit(X_train, Y_train)
@@ -109,10 +109,16 @@ y_test_predict = lin_model.predict(X_test)
 rmse_testing = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
 r2_testing = r2_score(Y_test, y_test_predict)
 
-print("model evaluation for rmse_training set: {%s}\n" % rmse_training)
+# print("model evaluation for rmse_training set: {%s}\n" % rmse_training)
 
-print("model evaluation for r2_training set: {%s}\n" % r2_training)
+# print("model evaluation for r2_training set: {%s}\n" % r2_training)
 
-print("model evaluation for rmse_testing set: {%s}\n" % rmse_testing)
+# print("model evaluation for rmse_testing set: {%s}\n" % rmse_testing)
 
-print("model evaluation for r2_testing set: {%s}\n" % r2_testing)
+# print("model evaluation for r2_testing set: {%s}\n" % r2_testing)
+
+with open("evalution.txt", 'w') as outfile:
+        outfile.write("model evaluation for rmse_training set: {%s}\n" % rmse_training)
+        outfile.write("model evaluation for r2_training set: {%s}\n" % r2_training)
+        outfile.write("model evaluation for rmse_testing set: {%s}\n" % rmse_testing)
+        outfile.write("model evaluation for r2_testing set: {%s}\n" % r2_testing)
