@@ -13,14 +13,14 @@ jobs:
           apt-get install python3
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-          python3 MLops.py
+          python3 MLops.py >> ./report.md
           
-          touch ./report.md
-          echo "## Model metrics" > ./report.md
-          cat evalution.txt >> ./report.md
-          cat metrics.txt >> ./report.md
-          echo "## Data viz" >> ./report.md
-          cml-publish feature.png --md >> ./report.md
+          
+          echo "## Model metrics" > report.md
+          cat evalution.txt >> report.md
+          cat metrics.txt >> report.md
+          echo "## Data viz" >> report.md
+          cml-publish feature.png --md >> report.md
           cml-publish target.png --md >> ./report.md
           
-          cml-send-comment ./report.md
+          cml-send-comment report.md
