@@ -32,7 +32,7 @@ l.sort(key=lambda x:x[0], reverse= True)
 
 #unzip the pairs to two lists 
 # zip(*l) takes a list that looks like [[a,b,c],[d,e,f],[g,h,i]]and returns [[a,d,g],[b,e,h],[c,f,i]]
-corrs,labels = list(zip(*l))
+labels,corrs = list(zip(*l))
 
 #plot correlation with respect to the target variable as a bar graph
 index = np.arange(len(labels))
