@@ -1,4 +1,3 @@
-
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
@@ -41,7 +40,7 @@ corrs,labels = list(zip(*l))
 
 #corrs
 
-#labels
+labels
 
 #plot correlation with respect to the target variable as a bar graph
 
@@ -64,17 +63,22 @@ plt.savefig("target",dpi=80)
 #plt.close()
 plt.show()
 
+X = pd.DataFrame(boston.data,columns=boston.feature_names)
+#X = pd.DataFrame(np.c_[boston['CRIM'], boston['RM']], columns = ['CRIM','RM'])
+Y = target
+
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state=5)
+
 # print(X_train.shape)
 # print(X_test.shape)
 # print(Y_train.shape)
 # print(Y_test.shape)
 
-# Fit a model on the train section
-# Set random seed
-# seed = 42
-# regr = RandomForestRegressor(max_depth=2, random_state=seed)
-# regr.fit(X_train, Y_train)
+#Fit a model on the train section
+#Set random seed
+seed = 42
+regr = RandomForestRegressor(max_depth=2, random_state=seed)
+regr.fit(X_train, Y_train)
 
 # Report training set score
 train_score = regr.score(X_train, Y_train) * 100
@@ -112,10 +116,3 @@ print("model evaluation for r2_training set: {%s}\n" % r2_training)
 print("model evaluation for rmse_testing set: {%s}\n" % rmse_testing)
 
 print("model evaluation for r2_testing set: {%s}\n" % r2_testing)
-
-
-# with open("evalution.txt", 'w') as outfile:
-#         outfile.write("model evaluation for training set: {%s}\n" % rmse_training)
-#         outfile.write("model evaluation for testing set: {}\n" % r2_training)
-#         outfile.write("model evaluation for training set: {}\n" % rmse_testing)
-#         outfile.write("model evaluation for testing set: {}\n" % r2_testing)
