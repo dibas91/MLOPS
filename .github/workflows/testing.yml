@@ -13,7 +13,7 @@ jobs:
           apt-get install python3
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-          python3 MLops.py
+          python3 Unix.py
           echo "## Demo" > report.md
 
           cat demo.txt >> report.md
