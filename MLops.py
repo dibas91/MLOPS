@@ -37,7 +37,7 @@ labels,corrs = list(zip(*l))
 #plot correlation with respect to the target variable as a bar graph
 index = np.arange(len(labels))
 plt.figure(figsize =(15,5))
-plt.bar(index,corrs,width=0.5)
+plt.bar(index,corrs,width=0.8)
 plt.xlabel('features')
 plt.ylabel("correlation with target values")
 plt.xticks(index,labels)
