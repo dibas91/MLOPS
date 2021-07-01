@@ -16,5 +16,5 @@ jobs:
           python3 MLops.py
           echo "## Demo" > report.md
 
-          cat evalution.txt >> report.md
+          cat demo.txt >> report.md
           cml-send-comment report.md
