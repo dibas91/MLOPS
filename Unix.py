@@ -1,5 +1,5 @@
 import os
-disk = os.system("df -h")
+disk = os.system("df -h ") 
 with open("demo.txt", 'w') as outfile:
-        outfile.write(" Demo testing: {%s}\n\n" % disk)
+        outfile.write(" Demo testing: %s\n" % disk)
 
