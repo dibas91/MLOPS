@@ -13,8 +13,6 @@ jobs:
           apt-get install python3
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
-          python3 Unix.py
-          echo "## Demo" > report.md
-
+          python3 Unix.py >> demo.txt
           cat demo.txt >> report.md
           cml-send-comment report.md
