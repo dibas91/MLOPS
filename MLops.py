@@ -46,7 +46,7 @@ plt.show()
 plt.close()
 
 # plot the distribution of the target variable "MEDV"
-plt.xlabel('target_test')
+plt.xlabel('target_test_demo')
 sns.set(rc={'figure.figsize':(11,10)})
 save = sns.distplot(target, bins=30)
 plt.savefig("target",dpi=120)
