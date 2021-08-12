@@ -92,3 +92,4 @@ with open("evalution.txt", 'w') as outfile:
         outfile.write("model evaluation for r2_training set: {%s}\n" % r2_training)
         outfile.write("model evaluation for rmse_testing set: {%s}\n" % rmse_testing)
         outfile.write("model evaluation for r2_testing set: {%s}\n" % r2_testing)
+
