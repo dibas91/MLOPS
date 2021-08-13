@@ -45,6 +45,7 @@ plt.savefig("feature",dpi=120)
 plt.show()
 plt.close()
 
+
 # plot the distribution of the target variable "MEDV"
 plt.xlabel('target')
 sns.set(rc={'figure.figsize':(11.7,8.27)})
