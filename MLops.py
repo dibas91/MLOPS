@@ -46,7 +46,7 @@ plt.show()
 plt.close()
 
 # plot the distribution of the target variable "MEDV"
-plt.xlabel('target')
+plt.xlabel('target_test')
 sns.set(rc={'figure.figsize':(11.7,8.27)})
 save = sns.distplot(target, bins=30)
 plt.savefig("target",dpi=120)
@@ -92,3 +92,4 @@ with open("evalution.txt", 'w') as outfile:
         outfile.write("model evaluation for r2_training set: {%s}\n" % r2_training)
         outfile.write("model evaluation for rmse_testing set: {%s}\n" % rmse_testing)
         outfile.write("model evaluation for r2_testing set: {%s}\n" % r2_testing)
+
